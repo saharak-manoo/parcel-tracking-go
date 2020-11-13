@@ -19,8 +19,8 @@ func (server *Server) KerryExpress(c *gin.Context) {
 			"data": data,
 		})
 	} else {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"status": http.StatusInternalServerError,
+		c.JSON(http.StatusNotFound, gin.H{
+			"status": http.StatusNotFound,
 			"message": err.Error(),
 		})
 	}
@@ -37,8 +37,8 @@ func (server *Server) JTExpress(c *gin.Context) {
 			"data": data,
 		})
 	} else {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"status": http.StatusInternalServerError,
+		c.JSON(http.StatusNotFound, gin.H{
+			"status": http.StatusNotFound,
 			"message": err.Error(),
 		})
 	}
@@ -55,8 +55,8 @@ func (server *Server) FlashExpress(c *gin.Context) {
 			"data": data,
 		})
 	} else {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"status": http.StatusInternalServerError,
+		c.JSON(http.StatusNotFound, gin.H{
+			"status": http.StatusNotFound,
 			"message": err.Error(),
 		})
 	}
