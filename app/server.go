@@ -52,8 +52,8 @@ func Run() {
 	migration.Load(server.DB)
 
 	// DB Seed
-	seeder := db.Seeder{}
-	seeder.Load(server.DB)
+	// seeder := db.Seeder{}
+	// seeder.Load(server.DB)
 
 	apiPort := getPort()
 	log.Print("Running on ENV: " + os.Getenv("APP_ENV"))
