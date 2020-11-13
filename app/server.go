@@ -7,13 +7,13 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/saharak/parcel-tracking-go/app/controllers"
-	"github.com/saharak/parcel-tracking-go/app/seed"
+	"github.com/saharak/parcel-tracking-go/app/db"
 )
 
 var server = controllers.Server{}
 
 func init() {
-	// loads values from .env into the system
+	// Loads values from .env into the system
 	if err := godotenv.Load(); err != nil {
 		log.Print(".env file found")
 	}
@@ -47,7 +47,13 @@ func Run() {
 		os.Getenv("DB_NAME"),
 	)
 
-	seed.Load(server.DB)
+	// DB Migration
+	migration := db.Migration{}
+	migration.Load(server.DB)
+
+	// DB Seed
+	seeder := db.Seeder{}
+	seeder.Load(server.DB)
 
 	apiPort := getPort()
 	log.Print("Running on ENV: " + os.Getenv("APP_ENV"))

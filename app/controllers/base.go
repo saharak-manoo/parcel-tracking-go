@@ -10,7 +10,6 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
 	"github.com/saharak/parcel-tracking-go/app/middlewares"
-	"github.com/saharak/parcel-tracking-go/app/models"
 )
 
 type Server struct {
@@ -31,11 +30,6 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 	} else {
 		fmt.Printf("Connected to the %s database", Dbdriver)
 	}
-
-	// Database migration
-	server.DB.Debug().AutoMigrate(
-		&models.User{},
-	)
 
 	server.Router = gin.Default()
 	server.Router.Use(middlewares.CORSMiddleware())
