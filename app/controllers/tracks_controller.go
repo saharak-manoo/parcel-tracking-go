@@ -47,7 +47,7 @@ func (server *Server) JTExpress(c *gin.Context) {
 func (server *Server) FlashExpress(c *gin.Context) {
 	trackingNumber := c.Query("trackingNumber")
 	etracking := models.ETracking{}
-	data, err := etracking.Track("kerry_express", trackingNumber)
+	data, err := etracking.Track("flash_express", trackingNumber)
 
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{
